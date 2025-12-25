@@ -1,0 +1,16 @@
+# Jupyter Notebook hidden files
+.ipynb_checkpoints/
+.virtual_documents/
+
+# Python internal files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments (very important to ignore!)
+venv/
+env/
+.env
+
+# MacOS system files
+.DS_Store
