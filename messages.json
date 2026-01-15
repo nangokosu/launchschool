@@ -1,0 +1,7 @@
+{
+    "welcome":"Welcome to the calculator",
+    "first_prompt": "What's the first number? ",
+    "second_prompt": "What's the second number? ",
+    "third_prompt": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide"
+
+}

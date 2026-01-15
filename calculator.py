@@ -1,9 +1,19 @@
+import json
+
+with open('messages.json','r') as file:
+    MESSAGES = json.load(file)
+
+
+
+
+
+
 def prompt(message):
     return f"=>{message}"
 
 def invalid_number(number_str):
     try:
-        int(number_str)
+        float(number_str)
     except ValueError:
         return True
 
@@ -14,15 +24,15 @@ def invalid_number(number_str):
 if __name__ == "__main__":
     
     while True: 
-        print("Welcome to the calculator!")
+        print(prompt(MESSAGES['welcome']))
         
-        print(prompt("What's the first number? "))
+        print(prompt(MESSAGES['first_prompt']))
         number1 = input()
         while invalid_number(number1):
             print("Not valid number")
             number1 = input()
         
-        print(prompt("What's the second number? "))
+        print(prompt(MESSAGES['second_prompt']))
         number2 = input()
         while invalid_number(number2):
             print("Not valid number")
@@ -30,7 +40,7 @@ if __name__ == "__main__":
             
         
         
-        print('What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide')
+        print(prompt(MESSAGES['third_prompt']))
         operation = input()
         while operation not in ["1", "2", "3", "4"]:
             print(prompt('You must choose 1, 2, 3, or 4'))
@@ -38,13 +48,13 @@ if __name__ == "__main__":
 
 
         if operation == '1':   # '1' represents addition
-            output = int(number1) + int(number2)
+            output = float(number1) + float(number2)
         elif operation == '2': # '2' represents subtraction
-            output = int(number1) - int(number2)
+            output = float(number1) - float(number2)
         elif operation == '3': # '3' represents multiplication
-            output = int(number1) * int(number2)
+            output = float(number1) * float(number2)
         elif operation == '4': # '4' represents division
-            output = int(number1) / int(number2)
+            output = float(number1) / float(number2)
 
         print(f"The result is: {output}")
         print(prompt("Do you want another session? Y/N"))
