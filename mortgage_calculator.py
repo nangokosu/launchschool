@@ -1,5 +1,5 @@
 def prompt(message):
-    return f"==> {message}"\
+    return f"==> {message}"
 
 def invalid_number(str):
     try: 
