@@ -1,5 +1,5 @@
 def prompt(message):
-    return f"==>{message}"\
+    return f"==> {message}"\
 
 def invalid_number(str):
     try: 
@@ -13,7 +13,7 @@ def invalid_number(str):
 
 def loan_duration():
     while True:
-        print(prompt("What is the term duration for the loan in years? Only input numbers, and convert months to years e.g 18 months in 1.5 years"))
+        print(prompt("What is the term duration for the loan in years? Only input numbers, and convert months to years e.g 18 months is 1.5 years, and you input 1.5"))
         num_of_years = input()
         while invalid_number(num_of_years):
             print(prompt("Invalid input, please follow the instructions and try again"))
@@ -32,9 +32,17 @@ def loan_duration():
     
     return num_of_years_float
 
+def calculate_payment(loan_amount, loan_duration_years, apr):
+    loan_amount = float(loan_amount)
+    loan_duration_months = loan_duration_years * 12
+    monthly_interest_rate = (float(apr)/100)/12
 
+    monthly_payment = loan_amount * (
+        monthly_interest_rate /
+            (1 - (1 + monthly_interest_rate) ** (-loan_duration_months))
+    )
 
-
+    return monthly_payment
 
 
 if __name__ == '__main__':
@@ -59,11 +67,14 @@ if __name__ == '__main__':
         print(prompt("What is the APR? Input numbers: for X% APR, input X only"))
         apr = input()
 
-    test_var = 1
+    
     # input num_of_years:
     loan_duration_float = loan_duration()
+
+    monthly_payment = calculate_payment(loan_amount = loan_amount, loan_duration_years = loan_duration_float, apr = apr)
+    
     print(
-        prompt(f"For a loan of ${loan_amount} for {loan_duration_float} years at {apr}% APR, your payment is {test_var}")
+        prompt(f"For a loan of ${loan_amount} for {loan_duration_float} years at {apr}% APR, your monthly payment is ${monthly_payment:.2f}")
     )
 
 
