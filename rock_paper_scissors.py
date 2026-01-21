@@ -32,6 +32,13 @@ if __name__ == "__main__":
             print(prompt("You lose!"))
         
         answer = input(prompt("Do you want to play again (y/n)? "))
+        while answer.lower() not in ['y','n']:
+             print(prompt("Invalid answer, please try again"))
+             answer = input(prompt("Do you want to play again (y/n)? "))
+
+        
+        
+        
         if 'n' in answer.lower():
             break
 
