@@ -43,6 +43,7 @@ class Board:
   
 
     def conduct_turn(self, player):
+        os.system('clear')
         print(f"{player.name}'s turn")
         row, column = player.choose()
         while self.board[row][column] != ' ':
@@ -57,13 +58,12 @@ class Board:
   
   
     def conduct_full_turn(self):
-        os.system('clear')
+        
         self.conduct_turn(self.human_player)
         if self.check_win(self.human_player):
             print('You win!')
             return True
         
-        os.system('clear')
         self.conduct_turn(self.computer_player)
         if self.check_win(self.computer_player):
             print('Computer wins!')
